@@ -1,20 +1,8 @@
 {
   "name": "OSHx",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Private testbed",
   "main": "main.js",
-  "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-csslint": "^0.3.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.1.0",
-    "gulp-sass": "^2.3.1",
-    "gulp-sourcemaps": "^2.0.0-alpha",
-    "gulp-webpack": "^1.5.0",
-    "postcss-scss": "^0.1.7"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,10 +10,19 @@
     "type": "git",
     "url": "https://oshx:qet135wr24@github.com/oshx/oshx.github.io.git"
   },
-  "author": "",
+  "author": "oshios",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/oshx/oshx.github.io/issues"
   },
-  "homepage": "https://github.com/oshx/oshx.github.io"
+  "homepage": "https://github.com/oshx/oshx.github.io",
+  "devDependencies": {
+    "es6-promise": "^3.1.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-csslint": "^0.3.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^2.0.0-alpha"
+  }
 }

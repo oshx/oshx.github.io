@@ -1,43 +1,48 @@
 function css(gulp, config){
     var sass = require('gulp-sass');
-    var sourcemaps = require('gulp-sourcemaps');
-    var postcss = require('gulp-postcss');
-    var autoprefixer = require('gulp-autoprefixer');
-    var scss = require('postcss-scss');
-    var csslint = require('gulp-csslint');
     var plumber = require('gulp-plumber');
-    var opacity = function (css, opts) {
-    css.eachDecl(function(decl) {
-        if (decl.prop === 'opacity') {
-    	        decl.parent.insertAfter(decl, {
-	                prop: '-ms-filter',
-                	value: '"progid:DXImageTransform.Microsoft.Alpha(Opacity=' + (parseFloat(decl.value) * 100) + ')"'
-            	});
-        	}
-    	});
-	};
-    var processors = [
-        opacity,
-        autoprefixer({browsers:['>0.5']})
-    ];
-    gulp.task('scss', function () {
-     	return gulp.src(config.compiler.SCSS)
-        		.pipe(plumber())
-                .pipe(sourcemaps.init())
-	            .pipe(postcss(processors, {syntax: scss}))
-                .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-                .pipe(sourcemaps.write(config.compiler.CSS))
-        		.pipe(csslint())
-                .pipe(gulp.dest(config.compiler.CSS));
-    });
+    var sourcemaps = require('gulp-sourcemaps');
+    var autoprefixer = require('gulp-autoprefixer');
+    var csslint = require('gulp-csslint');
+    require('es6-promise').polyfill();
 
-	gulp.task('sass:watch', function () {
-    	console.log(
-                '[NOTICE] if you want to quit the watching, press the CTRL + C  - by Odi',
-                '\n[알림] 감시 작업을 종료하려면 CTRL + C를 누르세요 - 오디 드림'
-               );
-  		gulp.watch(config.compiler.SCSS, ['sass']);
+	var fileScss = '**/*.scss';
+    var fileCss = '**/*.css';
+    var destCss = config.src + 'css/';
+    var compileScss = config.src + 'scss/' + fileScss;
+    var lintTargetCss = destCss + fileCss;
+    gulp.task('css', function () {
+        scssCompile(compileScss, destCss);
+    });
+	gulp.task('css:watch', function () {
+        console.log(
+        '[Odi:NOTICE] if you want to quit the watching, press the CTRL + C',
+        '\n[오디:알림] 감시 작업을 마치려면 CTRL + C를 누르세요'
+        );
+        gulp.watch(compileScss, ['css']);
 	});
-};
+
+    function scssCompile(compileBase, targetBase){
+        return gulp.src([
+            	compileBase
+        ])
+        .pipe(plumber())
+        .pipe(autoprefixer({
+            browser: [
+                '> 0.5%',
+                'ie > 6'
+            ],
+            cascade: false
+        }))
+        .pipe(sass({
+            errLogToConsole: true,
+            outputStyle: 'compressed'
+        	}).on('error',
+              sass.logError
+            )
+         )
+        .pipe(gulp.dest(targetBase));
+    }
+}
 
 module.exports = css;
