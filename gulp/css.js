@@ -13,6 +13,7 @@ function css(gulp, config){
     var lintTargetCss = destCss + fileCss;
     gulp.task('css', function () {
         scssCompile(compileScss, destCss);
+        cssLint(lintTargetCss);
     });
 	gulp.task('css:watch', function () {
         console.log(
@@ -21,6 +22,14 @@ function css(gulp, config){
         );
         gulp.watch(compileScss, ['css']);
 	});
+    function cssLint(targetCss){
+        return gulp.src([
+            targetCss
+        ])
+        .pipe(plumber())
+        .pipe(csslint())
+        .pipe(csslint.reporter());
+    }
 
     function scssCompile(compileBase, targetBase){
         return gulp.src([
