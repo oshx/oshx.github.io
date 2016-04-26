@@ -21,7 +21,9 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-csslint": "^0.3.0",
+    "gulp-jekyll": "0.0.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-react": "^3.1.0",
     "gulp-sass": "^2.3.1",
     "gulp-sourcemaps": "^2.0.0-alpha"
   }
