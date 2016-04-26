@@ -3,13 +3,28 @@
 2016-04-23
 OSHx(oshios@naver.com)
 -->
-<html lang="ko-kr">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" name="width=device-width,initial-scale=1">
-		<title>OSHx</title>
-	</head>
-    <body>
-
-    </body>
+<!--[if IE 6]><html class="lt-ie10 ie6" lang="ko-KR"><![endif]-->
+<!--[if IE 7]><html class="lt-ie10 ie7" lang="ko-KR"><![endif]-->
+<!--[if IE 8]><html class="lt-ie10 ie8" lang="ko-KR"><![endif]-->
+<!--[if IE 9]><html class="lt-ie10 ie9" lang="ko-KR"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="ko-KR" class="evergreen"><!--<![endif]-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" name="width=device-width,initial-scale=1">
+<title>OSHx</title>
+<script src="/bower_components/requirejs/require.js" data-main="/src/js/main.js"></script>
+<script>
+requirejs.config({
+    baseUrl: '/src/js',
+    paths: {
+        jquery: '../../bower_components/jquery/dist/jquery.min'
+    }
+});
+</script>
+<noscript></noscript>
+</head>
+<body>
+<noscript>
+</noscript>
+</body>
 </html>

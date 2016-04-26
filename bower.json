@@ -1,0 +1,17 @@
+{
+  "name": "OSHx",
+  "description": "Private testbed",
+  "main": "main.js",
+  "authors": [
+    "oshios"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/oshx/oshx.github.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
