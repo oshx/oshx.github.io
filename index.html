@@ -14,16 +14,18 @@ OSHx(oshios@naver.com)
 <title>OSHx</title>
 <script src="/bower_components/requirejs/require.js" data-main="/src/js/main.js"></script>
 <script>
+requirejs.bowerUrl = '../../bower_components; 
 requirejs.config({
     baseUrl: '/src/js',
     paths: {
-        jquery: '../../bower_components/jquery/dist/jquery.min'
+        jquery: '/jquery/dist/jquery.min'
     }
 });
 </script>
 <noscript></noscript>
 </head>
 <body>
+    COME HERE!!
 <noscript>
 </noscript>
 </body>
