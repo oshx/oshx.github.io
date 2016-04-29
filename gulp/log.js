@@ -1,4 +1,4 @@
-function logHandler(args){
+function logHandler(options){
     var colors = require('colors');
     colors.setTheme({
         warn: 'red',
@@ -38,7 +38,7 @@ function logHandler(args){
         return now = [_timeFormat(now.getHours()),_timeFormat(now.getMinutes()),_timeFormat(now.getSeconds())].join(':');
     }
     function _getPrefix(){
-        return '['+colors.sub(_getTime())+'] <'+colors.em('OSHx Log')+'> from ' + colors.info(callerFile);
+        return '['+colors.sub(_getTime())+'] '+colors.em('OSHx')+' ' + colors.info(callerFile);
     }
     function log(args){
         return console.log(_getPrefix(), colors.flat('[Info]'), args);
@@ -56,8 +56,12 @@ function logHandler(args){
         load(args);
         return require(args);
     };
-    var callerFile = _getCallerFile().split('/');
-    callerFile = callerFile[callerFile.length - 1];
+    function _parseFileName(target){
+        target = target.split('/');
+        return target[target.length - 1];
+    }
+    var callerFile = _parseFileName(_getCallerFile());
+    load(_parseFileName(__filename));
     return {
         log: log,
         warn: warn,
