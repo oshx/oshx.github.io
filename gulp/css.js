@@ -1,12 +1,17 @@
 function css(gulp, config){
-    var sass = require('gulp-sass');
-    var plumber = require('gulp-plumber');
-    var sourcemaps = require('gulp-sourcemaps');
-    var autoprefixer = require('gulp-autoprefixer');
-    var csslint = require('gulp-csslint');
-    require('es6-promise').polyfill();
+    var logHandler = config.logHandler();
+    var log = logHandler.log;
+    var warn = logHandler.warn;
+    var load = logHandler.load;
+    var success = logHandler.success;
+    var logRequire = logHandler.require;
+    var sass = logRequire('gulp-sass');
+    var plumber = logRequire('gulp-plumber');
+    var sourcemaps = logRequire('gulp-sourcemaps');
+    var autoprefixer = logRequire('gulp-autoprefixer');
+    var csslint = logRequire('gulp-csslint');
 
-	var fileScss = '**/*.scss';
+    var fileScss = '**/*.scss';
     var fileCss = '**/*.css';
     var destCss = config.src + 'css/';
     var compileScss = config.src + 'scss/' + fileScss;
@@ -14,15 +19,16 @@ function css(gulp, config){
     gulp.task('css', function () {
         scssCompile(compileScss, destCss);
         cssLint(lintTargetCss);
+        success('CSS compiled');
     });
-	gulp.task('css:watch', function () {
-        console.log(
-        '[Odi:NOTICE] if you want to quit the watching, press the CTRL + C',
-        '\n[오디:알림] 감시 작업을 마치려면 CTRL + C를 누르세요'
-        );
+    gulp.task('css:watch', function () {
+        log('if you want to quit the watching, press the CTRL + C');
+        log('감시 작업을 마치려면 CTRL + C를 누르세요');
+        success('Watching');
         gulp.watch(compileScss, ['css']);
-	});
+    });
     function cssLint(targetCss){
+        log('Lint compiled CSS');
         return gulp.src([
             targetCss
         ])
@@ -32,8 +38,9 @@ function css(gulp, config){
     }
 
     function scssCompile(compileBase, targetBase){
+        log('Compile SCSS to CSS');
         return gulp.src([
-            	compileBase
+                compileBase
         ])
         .pipe(plumber())
         .pipe(autoprefixer({
@@ -46,7 +53,7 @@ function css(gulp, config){
         .pipe(sass({
             errLogToConsole: true,
             outputStyle: 'compressed'
-        	}).on('error',
+            }).on('error',
               sass.logError
             )
          )
