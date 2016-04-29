@@ -1,6 +1,7 @@
 define([
-    'jquery'
-],function($){
-    'use strict';
+    "jquery"
+], function($){
+    "use strict";
     console.log($);
+    console.log($('window'));
 });
