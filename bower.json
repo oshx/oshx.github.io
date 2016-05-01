@@ -21,6 +21,8 @@
     "spin.js": "spinjs#^2.3.2",
     "requirejs": "^2.2.0",
     "angular": "angular2#^1.5.5",
-    "text": "requirejs-text#^2.0.15"
+    "text": "requirejs-text#^2.0.15",
+    "normalize-strings": "normalize#^1.0.4",
+    "normalize-css": "^4.1.1"
   }
 }

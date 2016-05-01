@@ -1,4 +1,4 @@
-function css(gulp, config){
+function css(gulp, config) {
     var logHandler = config.logHandler();
     var log = logHandler.log;
     var warn = logHandler.warn;
@@ -9,7 +9,6 @@ function css(gulp, config){
     var plumber = logRequire('gulp-plumber');
     var sourcemaps = logRequire('gulp-sourcemaps');
     var autoprefixer = logRequire('gulp-autoprefixer');
-    var csslint = logRequire('gulp-csslint');
 
     var fileScss = '**/*.scss';
     var fileCss = '**/*.css';
@@ -18,7 +17,6 @@ function css(gulp, config){
     var lintTargetCss = destCss + fileCss;
     gulp.task('css', function () {
         scssCompile(compileScss, destCss);
-        cssLint(lintTargetCss);
         success('CSS compiled');
     });
     gulp.task('css:watch', function () {
@@ -27,22 +25,14 @@ function css(gulp, config){
         success('Watching');
         gulp.watch(compileScss, ['css']);
     });
-    function cssLint(targetCss){
-        log('Lint compiled CSS');
-        return gulp.src([
-            targetCss
-        ])
-        .pipe(plumber())
-        .pipe(csslint())
-        .pipe(csslint.reporter());
-    }
 
-    function scssCompile(compileBase, targetBase){
+    function scssCompile(compileBase, targetBase) {
         log('Compile SCSS to CSS');
         return gulp.src([
-                compileBase
+            compileBase
         ])
         .pipe(plumber())
+        .pipe(sourcemaps.init())
         .pipe(autoprefixer({
             browser: [
                 '> 0.5%',
@@ -53,10 +43,11 @@ function css(gulp, config){
         .pipe(sass({
             errLogToConsole: true,
             outputStyle: 'compressed'
-            }).on('error',
-              sass.logError
+        }).on('error',
+            sass.logError
             )
-         )
+        )
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(targetBase));
     }
 }

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+$base-font:'나눔바른고딕',nanumbarungothic,'나눔고딕',nanumgothic,'맑은 고딕',malgun gothic,apple sd gothic neo,'돋움',dotum,sans-serif;
 @mixin clearfix {
 	*zoom:1;
 	&:after{
@@ -5,4 +7,10 @@
 		display:block;
 		clear:both;
 	}
+}
+@mixin simple-reset {
+	margin:0;
+	padding:0;
+	border:0;
+	background:none transparent;
 }
