@@ -6,12 +6,20 @@
     "oshios"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/oshx/oshx.github.io",
+  "homepage": "https://oshx.github.io",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "1.12.2",
+    "jquery-ui": "^1.11.4",
+    "angular": "^1.5.5",
+    "spin.js": "spinjs#^2.3.2",
+    "requirejs": "^2.2.0"
+  }
 }
