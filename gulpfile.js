@@ -1,5 +1,5 @@
 var config = {
-    logHandler: require('./gulp/log'),
+    logHandler: require('./util/log'),
     src: './src/'
 };
 var gulp = config.logHandler().require('gulp');

@@ -3,8 +3,8 @@ function logHandler(options){
     colors.setTheme({
         warn: 'red',
         success: 'green',
-        flat: 'blue',
-        info: 'cyan',
+        flat: 'cyan',
+        info: 'magenta',
         sub: 'gray',
         em: 'yellow'
     });
@@ -30,6 +30,17 @@ function logHandler(options){
 
     return callerfile;
     }
+    function _getStringFromObject(object){
+        var returnString = '';
+        for (var i in object) {
+            if (typeof object[i] === 'string') {
+                returnString += object[i];
+            } else {
+                returnString += JSON.stringify(object[i]);
+            }
+        }
+        return returnString;
+    }
     function _timeFormat(number){
         return (number<10)?'0'+number:number;
     }
@@ -38,26 +49,30 @@ function logHandler(options){
         return now = [_timeFormat(now.getHours()),_timeFormat(now.getMinutes()),_timeFormat(now.getSeconds())].join(':');
     }
     function _getPrefix(){
-        return '['+colors.sub(_getTime())+'] '+colors.em('OSHx')+' ' + colors.info(callerFile);
+        return '['+colors.sub(_getTime())+'] '+'OSHx'.em+' ' + callerFile.info;
     }
-    function log(args){
-        return console.log(_getPrefix(), colors.flat('[Info]'), args);
+    function log(){
+        return console.log(_getPrefix(), '[Info]'.flat, _getStringFromObject(arguments));
     }
-    function warn(args){
-        return console.log(_getPrefix(), colors.warn('[Warn]'), args);
+    function warn(){
+        return console.log(_getPrefix(), '[Warn]'.warn, _getStringFromObject(arguments));
     }
-    function load(args){
-        return console.log(_getPrefix(), colors.sub('[Load]'), args);
+    function load(){
+        return console.log(_getPrefix(), '[Load]'.info, _getStringFromObject(arguments));
     }
-    function success(args){
-        return console.log(_getPrefix(), colors.green('[Success]'), args);
+    function success(){
+        return console.log(_getPrefix(), '[Success]'.success, _getStringFromObject(arguments));
     }
-    function logRequire(args){
-        load(args);
-        return require(args);
+    function logRequire(arg){
+        load(arg);
+        return require(arg);
     };
     function _parseFileName(target){
-        target = target.split('/');
+        if (target.indexOf('/') > -1) {
+            target = target.split('/');
+        } else {
+            target = target.split('\\');
+        }
         return target[target.length - 1];
     }
     var callerFile = _parseFileName(_getCallerFile());
