@@ -1,4 +1,4 @@
-function html(gulp, config){
+function html(gulp, config) {
     'use strict';
     var logHandler = config.logHandler();
     var log = logHandler.log;
@@ -7,23 +7,39 @@ function html(gulp, config){
     var minify = logRequire('gulp-htmlmin');
     var rename = logRequire('gulp-rename');
     var removeComment = logRequire('gulp-strip-comments');
-    var changeTarget = './*.dev.html';
-    function renameDist(path){
+    var htmlFormat = '*.dev.html';
+    var target = {
+        root: {
+            from: './' + htmlFormat,
+            to: './'
+        },
+        src: {
+            from: config.src + 'html/' + htmlFormat,
+            to: config.src + 'html/'
+        }
+    };
+    function renameDist(path) {
         log('rename to sub suffix "dev" in htmls');
-        path.basename = path.basename.replace(/\.dev/,'');
+        path.basename = path.basename.replace(/\.dev/, '');
     }
-    function min(){
+    function minifyHtml(from, to) {
         log('minify html');
-        return gulp.src(changeTarget)
-               .pipe(removeComment({
-                   safe: true
-               }))
-               .pipe(minify({
-                   collapseWhitespace: true
-                }))
-               .pipe(rename(renameDist))
-               .pipe(gulp.dest('./'));
+        return gulp.src(from)
+            .pipe(removeComment({
+                safe: true
+            }))
+            .pipe(minify({
+                collapseWhitespace: true
+            }))
+            .pipe(rename(renameDist))
+            .pipe(gulp.dest(to));
     }
-    gulp.task('html', min);
+    function taskMin() {
+        log('minify ' + target.root.from);
+        minifyHtml(target.root.from, target.root.to);
+        log('minify ' + target.src.from);
+        minifyHtml(target.src.from, target.src.to);
+    }
+    gulp.task('html', taskMin);
 }
 module.exports = html;
