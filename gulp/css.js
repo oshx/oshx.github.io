@@ -9,6 +9,7 @@ function css(gulp, config) {
     var plumber = logRequire('gulp-plumber');
     var sourcemaps = logRequire('gulp-sourcemaps');
     var autoprefixer = logRequire('gulp-autoprefixer');
+    var rename = logRequire('gulp-rename');
 
     var fileScss = '**/*.scss';
     var fileCss = '**/*.css';
@@ -22,10 +23,14 @@ function css(gulp, config) {
     gulp.task('css:watch', function () {
         log('if you want to quit the watching, press the CTRL + C');
         log('감시 작업을 마치려면 CTRL + C를 누르세요');
-        success('Watching');
+        success('Watching SCSS');
         gulp.watch(compileScss, ['css']);
     });
 
+    function renameCss(path){
+        log('rename:',path.basename);
+        path.basename += '.min'
+    }
     function scssCompile(compileBase, targetBase) {
         log('Compile SCSS to CSS');
         return gulp.src([
@@ -48,6 +53,7 @@ function css(gulp, config) {
             )
         )
         .pipe(sourcemaps.write())
+        .pipe(rename(renameCss))
         .pipe(gulp.dest(targetBase));
     }
 }

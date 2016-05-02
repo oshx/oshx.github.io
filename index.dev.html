@@ -7,11 +7,12 @@
 <!--[if IE 7]><html class="oshx-root lt-ie10 ie7" lang="ko-KR" data-ng-app="oshx"><![endif]-->
 <!--[if IE 8]><html class="oshx-root lt-ie10 ie8" lang="ko-KR" data-ng-app="oshx"><![endif]-->
 <!--[if IE 9]><html class="oshx-root lt-ie10 ie9" lang="ko-KR" data-ng-app="oshx"><![endif]-->
-<!--[if gt IE 9]><!--><html lang="ko-KR" class="oshx-root evergreen" data-ng-app="oshx"><!--<![endif]-->
+<!--[if gte IE 10]><!--><html lang="ko-KR" class="oshx-root evergreen" data-ng-app="oshx"><!--<![endif]-->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="author" content="oshx, oshios@naver.com">
+<title>OSHx</title>
 <!--[if lte IE 10]><link rel="shortcut icon" href="./favicon.ico"><![endif]-->
 <!--[if gt IE 10]><!-->
 <link rel="icon" type="image/png" sizes="16x16" href="./src/img/favicon-16.png">
@@ -20,13 +21,15 @@
 <link rel="icon" type="image/png" sizes="62x62" href="./src/img/favicon-62.png">
 <link rel="icon" type="image/png" href="./src/img/favicon.png">
 <!--<![endif]-->
-<title>OSHx</title>
+<!--[if lte IE 9]><script src="./src/lib/html5shiv/dist/html5shiv.min.js"></script><![endif]-->
+<link rel="stylesheet" href="./src/css/main.min.css">
 <script src="./src/lib/requirejs/require.js" data-main="./src/js/app.main.js"></script>
 <noscript></noscript>
-<link ref="stylesheet" href="./src/css/main.css">
 </head>
-<body>
-Under construction
+<body class="oshx-body">
+    <header class="oshx-header">
+        <h1 class="header__logo">Under construction</h1>
+    </header>
 <noscript>
 </noscript>
 </body>

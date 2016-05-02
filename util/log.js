@@ -58,7 +58,7 @@ function logHandler(options){
         return console.log(_getPrefix(), '[Warn]'.warn, _getStringFromObject(arguments));
     }
     function load(){
-        return console.log(_getPrefix(), '[Load]'.info, _getStringFromObject(arguments));
+        return console.log(_getPrefix(), '[Load]'.success, _getStringFromObject(arguments));
     }
     function success(){
         return console.log(_getPrefix(), '[Success]'.success, _getStringFromObject(arguments));

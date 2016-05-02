@@ -8,3 +8,4 @@ require('./gulp/css')(gulp, config);
 require('./gulp/html')(gulp, config);
 
 gulp.task('default', ['css','html']);
+gulp.task('watch', ['default','css:watch','html:watch']);

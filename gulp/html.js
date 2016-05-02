@@ -1,8 +1,9 @@
 function html(gulp, config) {
     'use strict';
     var logHandler = config.logHandler();
-    var log = logHandler.log;
     var logRequire = logHandler.require;
+    var log = logHandler.log;
+    var success = logHandler.success;
 
     var minify = logRequire('gulp-htmlmin');
     var rename = logRequire('gulp-rename');
@@ -19,7 +20,7 @@ function html(gulp, config) {
         }
     };
     function renameDist(path) {
-        log('rename to sub suffix "dev" in htmls');
+        log('rename:', path.basename);
         path.basename = path.basename.replace(/\.dev/, '');
     }
     function minifyHtml(from, to) {
@@ -41,5 +42,12 @@ function html(gulp, config) {
         minifyHtml(target.src.from, target.src.to);
     }
     gulp.task('html', taskMin);
+    gulp.task('html:watch', function(){
+        log('if you want to quit the watching, press the CTRL + C');
+        log('감시 작업을 마치려면 CTRL + C를 누르세요');
+        success('Watching HTML');
+        gulp.watch(target.root.from, ['html']);
+        gulp.watch(target.src.from, ['html']);
+    });
 }
 module.exports = html;

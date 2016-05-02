@@ -1,9 +1,16 @@
-var oshx = require.config({
-    baseUrl: './src/js/',
+var oshx = {
+    config:{
+        BASE_URL: './src/js/',
+        LIB_URL: '../lib/'
+    }
+};
+oshx.require = require.config({
+    baseUrl: oshx.config.BASE_URL,
     paths: {
-        text: '../lib/text/text',
-        jquery: '../lib/jquery/dist/jquery.min',
-        angular: '../lib/angular/angular.min'
+        text: oshx.config.LIB_URL + 'text/text',
+        jquery: oshx.config.LIB_URL + 'jquery/dist/jquery.min',
+        angular: oshx.config.LIB_URL + 'angular/angular.min',
+        spinjs: oshx.config.LIB_URL + 'spin.js/spin.min'
     },
     shim: {
         angular: {
@@ -18,7 +25,7 @@ var oshx = require.config({
         }
     }
 });
-oshx([
+oshx.require([
     'text',
     'jquery'
 ], function (text, $) {
