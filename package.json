@@ -26,12 +26,14 @@
     "gulp-babel": "^6.1.2",
     "gulp-csslint": "^0.3.0",
     "gulp-handlebars": "^4.0.0",
+    "gulp-htmlmin": "^2.0.0",
     "gulp-jekyll": "0.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-react": "^3.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.1",
     "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-strip-comments": "^2.4.3",
     "gulp-uglifyjs": "^0.6.2"
   },
   "dependencies": {
