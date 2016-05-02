@@ -7,4 +7,4 @@ require('./gulp/polyfill', config);
 require('./gulp/css')(gulp, config);
 require('./gulp/html')(gulp, config);
 
-gulp.task('default', ['css']);
+gulp.task('default', ['css','html']);
