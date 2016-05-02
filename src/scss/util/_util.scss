@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import "../../lib/normalize-css/normalize";
 $base-font:'나눔바른고딕',nanumbarungothic,'나눔고딕',nanumgothic,'맑은 고딕',malgun gothic,apple sd gothic neo,'돋움',dotum,sans-serif;
 @mixin clearfix {
 	*zoom:1;

@@ -11,7 +11,14 @@ OSHx(oshios@naver.com)
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" name="width=device-width,initial-scale=1">
-<link rel="icon" href="./src/img/favicon.ico">
+<!--[if lte IE 10]><link rel="shortcut icon" href="./favicon.ico"><![endif]-->
+<!--[if gt IE 10]><!-->
+<link rel="icon" type="image/png" sizes="16x16" href="./src/img/favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./src/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="./src/img/favicon-48.png">
+<link rel="icon" type="image/png" sizes="62x62" href="./src/img/favicon-62.png">
+<link rel="icon" type="image/png" href="./src/img/favicon.png">
+<!--<![endif]-->
 <title>OSHx</title>
 <script src="./src/lib/requirejs/require.js" data-main="./src/js/app.main.js"></script>
 <noscript></noscript>
