@@ -3,6 +3,7 @@ node_modules/*
 .DS_Store
 .idea/*
 *.log
+
 src/lib/**/*.json
 src/lib/**/*.map
 src/lib/**/*.gzip
