@@ -2,3 +2,13 @@ goorm.manifest
 node_modules/*
 .DS_Store
 .idea/*
+*.log
+src/lib/**/*.json
+src/lib/**/*.map
+src/lib/**/*.gzip
+src/lib/**/*.md
+src/lib/**/*.txt
+src/lib/**/.gitignore
+src/lib/**/.yml
+src/lib/**/README
+src/lib/**/LICENSE
