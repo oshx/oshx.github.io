@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>iframe Step.1</title>
+    <script src="./param.js"></script>
+</head>
+
+<body>
+    <h1>iframe 통신</h1>
+    <iframe src=""></iframe>
+    <fieldset>
+        <legend>상황판</legend>
+        <div id="param">현재 Param이 있는 경우 이 곳에 표시됩니다.</div>
+        <div id="iframe">iframe으로부터 값이 들어온 경우 이 곳에 표시됩니다.</div>
+        <div id="url"></div>
+    </fieldset>
+    <script>(function(){
+    'use strict';
+    pick('url').text('이곳의 domain은 ' + document.domain + '입니다.');
+})();</script>
+</body>
+
+</html>
