@@ -6,7 +6,7 @@ Hi, I'm a Korean who born and grown up in South Korea.
 
 [HackerRank](https://www.hackerrank.com/profile/oshios)
 
-## Projects Public
+## Public Toy Projects
 ### npm
 - [@oshx/type-helper](https://www.npmjs.com/package/@oshx/type-helper)
 
@@ -16,6 +16,7 @@ Hi, I'm a Korean who born and grown up in South Korea.
 - [oshx](https://github.com/oshx)
 - [ECR](https://oshx.github.io/ecr/) - [sources](https://github.com/oshx/ecr/)
 - [Calendar](https://oshx.github.io/calendar/) - [sources](https://github.com/oshx/calendar/)
+- [Clock](https://oshx.github.io/clock/) - [sources](https://github.com/oshx/clock/)
 
 ## Contact me
 [E-mail](mailto://oshxios@gmail.com)
